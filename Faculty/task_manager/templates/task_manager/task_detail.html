@@ -1,0 +1,21 @@
+{% extends "./base.html" %}
+{% block content %}
+<div class="table-responsive table-borderless" style="padding: 5%;">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Key Area:</td>
+                <td>{{ object.key_area }}</td>
+            </tr>
+            <tr>
+                <td>Metric:</td>
+                <td>{{ object.metric.all|join:"," }}</td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td>{{ object.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
