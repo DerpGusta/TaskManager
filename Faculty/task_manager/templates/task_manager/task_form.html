@@ -14,16 +14,33 @@
 </head>
 <body>
     <div class="content-section">
-        <form method="post">
+        <form method="post" id="taskform" data-metrics-url="{% url 'ajax_load_metrics' %}" novalidate> 
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Task</legend>
-                {{ form.as_p }}
+                {{ form.as_table }}
             </fieldset>
             <div class="form-group"><button class="btn btn-outline-info" type="submit">Add Task</button></div>
         </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    {{ form.media.js}}    
+    {{ form.media.js}}
+    <script>
+      $("#id_key_area").change(function () {
+        var url = $("#taskform").attr("data-metrics-url");  // get the url of the `load_cities` view
+        var KRAid = $(this).val();  // get the selected country ID from the HTML input
+  
+        $.ajax({                       // initialize an AJAX request
+          url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+          data: {
+            'key_area': KRAid       // add the country id to the GET parameters
+          },
+          success: function (data) {   // `data` is the return of the `load_cities` view function
+            $("#id_metric").html(data);  // replace the contents of the city input with the data that came from the server
+          }
+        });
+  
+      });
+    </script>
 </body>
 </html>

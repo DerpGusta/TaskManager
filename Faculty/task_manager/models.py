@@ -46,7 +46,7 @@ class Metric(models.Model):
 
 class Task(models.Model):
     key_area = models.ForeignKey('KRA', on_delete=models.CASCADE)
-    metric = models.ManyToManyField('Metric')
+    metric = models.ForeignKey('Metric', on_delete=models.CASCADE)
     description = models.CharField(max_length=300)
     department = models.ForeignKey('Department', on_delete=models.CASCADE)
     branch = models.ForeignKey('Branch', on_delete=models.CASCADE)

@@ -26,6 +26,7 @@ urlpatterns = [
              template_name='task_manager/login.html',
              authentication_form=CustomLoginForm),
          name='login'),
+    path('', include('task_manager.urls')),
     path('logout/',
          auth_views.LogoutView.as_view(template_name='task_manager/logout.html'),
          name='logout'),

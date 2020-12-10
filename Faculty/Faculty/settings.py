@@ -131,6 +131,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'task'
-LOGOUT_REDIRECT_URL = 'task'
+# LOGOUT_REDIRECT_URL = 'task'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 SELECT2_CACHE_BACKEND = 'default'

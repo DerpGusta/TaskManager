@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for metric in metrics %}
+<option value="{{ metric.id }}">{{ metric.description }}</option>
+{% endfor %}

@@ -21,14 +21,15 @@ class KeyWidget(s2forms.Select2Widget):
 class MetricWidget(s2forms.Select2MultipleWidget):
     search_fields = ['description__icontains',]
 
-
 class TaskForm(forms.ModelForm):
     """ Custom Form for Task Creation and using select2 widgets """
 
     class Meta:
         model = Task
         fields = ['key_area', 'metric', 'description']
-        widgets = {
-            "key_area" : KeyWidget,
-            "metric"   : MetricWidget,
-        }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['metric'].queryset = Metric.objects.none()
+
+
+    
